@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 public class MainController{
 
     @POST
-    @Produces("text/plain")
+    @Produces("application/json")
     public SlackResponse helloWorld() {
         return new SlackResponse("hello World", new Attachment("woot!"), "ephemeral");
     }
