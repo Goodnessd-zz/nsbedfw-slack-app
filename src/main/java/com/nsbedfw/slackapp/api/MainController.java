@@ -1,5 +1,6 @@
 package com.nsbedfw.slackapp.api;
 
+import com.nsbedfw.slackapp.api.SlackResponse.SlackResponseBuilder;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.POST;
@@ -13,6 +14,10 @@ public class MainController{
     @POST
     @Produces("application/json")
     public SlackResponse helloWorld() {
-        return new SlackResponse("hello World", new Attachment("woot!"), "ephemeral");
+        String comingSoonString = "Hi! We are currently underway in planning the programming and intiatives " +
+                "for the year. Check back soon for more information on how you can become involved with the chapter!";
+        Attachment attachment = new Attachment("In the meantime, why not ask any of our E-board members!");
+
+        return new SlackResponseBuilder().text(comingSoonString).attachments(attachment).build();
     }
 }
