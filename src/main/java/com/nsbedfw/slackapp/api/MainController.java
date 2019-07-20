@@ -18,7 +18,7 @@ public class MainController{
     public SlackResponse helloWorld() {
         String comingSoonString = "Hi! We are currently underway in planning the programming and intiatives " +
                 "for the year. Check back soon for more information on how you can become involved with the chapter!";
-        Attachment attachment = new Attachment("In the meantime, why not ask any of our E-board members!");
+        Attachment attachment = new Attachment("In the meantime, why not ask any of our E-board members. :)");
         return new SlackResponseBuilder().text(comingSoonString).attachments(singletonList(attachment)).build();
     }
 }
