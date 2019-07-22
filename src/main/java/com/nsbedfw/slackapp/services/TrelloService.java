@@ -8,7 +8,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 import static org.springframework.http.HttpMethod.GET;
@@ -26,12 +25,12 @@ public class TrelloService {
     @Value("${UPCOMING_EVENTS}")
     private String id;
 
-    public void getBoard(){
+    public List<String> getBoard(){
         String url = String.format("https://api.trello.com/1/lists/%s/cards?key=%s&token=%s",id,key,token);
         ResponseEntity<List<BoardApiResponse>> response = restTemplate.exchange(url, GET, null, new ParameterizedTypeReference<List<BoardApiResponse>>() {
         });
 
         List<String> cardNames = Objects.requireNonNull(response.getBody()).stream().map(BoardApiResponse::getName).collect(toList());
-        cardNames.forEach(System.out::println);
+        return cardNames;
     }
 }
