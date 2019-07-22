@@ -1,10 +1,14 @@
+.*
+!/.gitignore
+
 # Intellij
 .idea/
+.gradle/
+build/
 *.iml
 *.iws
 
 # Mac
 .DS_Store
 
-.gradle
-/build/
+out/
