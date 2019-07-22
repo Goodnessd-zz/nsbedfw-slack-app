@@ -31,6 +31,6 @@ public class MainController{
 
         List<Attachment> attachments = board.stream().map(Attachment::new).collect(Collectors.toList());
 
-        return new SlackResponseBuilder().text(comingSoonString).attachments(singletonList(attachments)).build();
+        return new SlackResponseBuilder().text(comingSoonString).attachments(attachments).build();
     }
 }
