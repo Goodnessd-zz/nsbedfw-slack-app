@@ -1,4 +1,4 @@
-package com.nsbedfw.slackapp.api;
+package com.nsbedfw.slackapp.services.slack;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

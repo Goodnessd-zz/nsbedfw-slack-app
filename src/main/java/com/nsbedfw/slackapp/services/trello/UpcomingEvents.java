@@ -1,9 +1,12 @@
-package com.nsbedfw.slackapp.services;
+package com.nsbedfw.slackapp.services.trello;
 
 import lombok.Getter;
 
+import java.util.Date;
+
+
 @Getter
-public class BoardApiResponse {
+public class UpcomingEvents {
     private String id;
     private String desc;
     private String dueReminder;
@@ -14,6 +17,6 @@ public class BoardApiResponse {
     private String name;
     private String pos;
     private String dueComplete;
-    private String due;
+    private Date due;
     private String url;
 }

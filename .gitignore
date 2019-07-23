@@ -1,6 +1,3 @@
-.*
-!/.gitignore
-
 # Intellij
 .idea/
 .gradle/
@@ -12,3 +9,4 @@ build/
 .DS_Store
 
 out/
+/**.bin
