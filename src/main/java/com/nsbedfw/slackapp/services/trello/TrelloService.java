@@ -28,7 +28,6 @@ public class TrelloService {
 
     public List<Event> getEvents() {
         String url = String.format("https://api.trello.com/1/lists/%s/cards?key=%s&token=%s", id, key, token);
-        System.out.println("url: " + url);
 
         ResponseEntity<List<UpcomingEvents>> response = restTemplate.exchange(
                 url,
