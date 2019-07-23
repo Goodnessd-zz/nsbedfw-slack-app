@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.asList;
+
 @Component
 public class SlackService {
 
@@ -21,8 +23,8 @@ public class SlackService {
         List<Attachment> attachments = events.stream()
                 .map(this::createAttachment)
                 .collect(Collectors.toList());
-
-        return new SlackResponseBuilder().attachments(attachments).build();
+        List<Attachment> firstFour = asList(attachments.get(0), attachments.get(1), attachments.get(3), attachments.get(4));
+        return new SlackResponseBuilder().attachments(firstFour).build();
     }
 
     private Attachment createAttachment(Event event) {
