@@ -17,14 +17,22 @@ public class SlackService {
     @Autowired
     TrelloService trelloService;
 
-    public SlackResponse createResponse() {
+    public SlackResponse createResponse(String request) {
+        if (request.contains("upcoming")) {
+            List<Attachment> firstFour = getUpcomingEvents();
+            return new SlackResponseBuilder().attachments(firstFour).build();
+        } else {
+            return new SlackResponseBuilder().text("Sorry, I don't recognize that parameter! Try \"upcoming\" to see a list of upcoming events").build();
+        }
+    }
+
+    private List<Attachment> getUpcomingEvents() {
         List<Event> events = trelloService.getEvents();
 
         List<Attachment> attachments = events.stream()
                 .map(this::createAttachment)
                 .collect(Collectors.toList());
-        List<Attachment> firstFour = asList(attachments.get(0), attachments.get(1), attachments.get(3), attachments.get(4));
-        return new SlackResponseBuilder().attachments(firstFour).build();
+        return asList(attachments.get(0), attachments.get(1), attachments.get(3), attachments.get(4));
     }
 
     private Attachment createAttachment(Event event) {

@@ -4,6 +4,7 @@ import com.nsbedfw.slackapp.services.slack.SlackResponse;
 import com.nsbedfw.slackapp.services.slack.SlackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -17,8 +18,8 @@ public class MainController{
 
     @POST
     @Produces("application/json")
-    public SlackResponse getEvents() {
-        SlackResponse response = slackService.createResponse();
+    public SlackResponse getEvents(@RequestParam SlackRequestPayload request) {
+        SlackResponse response = slackService.createResponse(request.getText());
         return response;
     }
 }
